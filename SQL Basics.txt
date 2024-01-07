@@ -1,0 +1,23 @@
+create table amazon_orders 
+(
+order_id integer,
+oder_date date,
+product_name varchar(100),
+total_price decimal(6,2),
+payment_method varchar(20)
+);
+
+insert into amazon_orders values(1,'2024-01-07','shoes',50.5,'upi')
+insert into amazon_orders values(2,'2024-01-07','shoes',70.3,'upi')
+--sql is structured query lang
+
+select * from amazon_orders
+/*
+date type
+integer
+date- yy/mm/dd
+string-> varchar(length)
+*/
+
+select oder_date from amazon_orders
+select oder_date,product_name from amazon_orders
