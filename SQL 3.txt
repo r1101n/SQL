@@ -1,0 +1,83 @@
+select top 5 * 
+from orders
+order by order_date desc
+
+--ship mode in excel
+select distinct segment from orders
+
+--filters--
+-- In excel we apply filter 
+select * from orders 
+where ship_mode='First Class';
+
+select * from orders 
+where order_date='2020-12-08';
+
+select top 5 order_date,quantity
+from orders
+where quantity >= 5
+order by quantity
+
+select * from orders
+where quantity  between 3 and 5
+
+-- in is same as '=' in sql for multiple values  = & both work it does
+select * from orders
+where ship_mode in ('First Class','Same Day')
+
+select * from orders
+where ship_mode not in ('First Class','Same Day')
+--where happens row by row
+
+select distinct ship_mode from orders
+where ship_mode = 'First Class' and segment='Consumer' 
+
+select distinct ship_mode from orders
+where ship_mode = 'First Class' or segment='Consumer' 
+
+-- and or are important commands for multiple columns
+
+
+-- cast function
+select cast(order_date as date)as order_date_new
+from orders
+
+-- New column and calculation
+select * , profit/sales as ratio
+from orders
+
+--pattern matching like operators
+select order_id,order_date,customer_name
+from orders
+where Customer_Name like '%VEN%'
+
+select order_id,order_date,customer_name
+from orders
+where Customer_Name like 'Alex%A'
+
+select order_id,order_date,customer_name
+from orders
+where Customer_Name like '_l%'
+
+--Rajan% Deshpande then use escape '%'
+
+--If I want something from them
+select order_id,order_date,customer_name
+from orders 
+where	Customer_Name like'C[^albo]%'
+
+--between a to h  and for exact a & h use '_'
+select order_id,order_date,customer_name
+from orders 
+where	Customer_Name like'C[a-o]%'
+where Customer_Name like 'C[albo]%'
+
+
+
+
+
+
+
+
+
+
