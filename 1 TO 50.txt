@@ -268,6 +268,19 @@ GROUP BY
 ORDER BY
   v.customer_id;
 
+CTE SOlution
+WITH ctekarun AS (
+    SELECT v.customer_id
+    FROM visits v
+    LEFT JOIN transactions t
+    ON v.visit_id = t.visit_id
+    WHERE t.visit_id IS NULL -- Identifies visits with no transactions
+)
+SELECT customer_id, COUNT(customer_id) AS count_no_trans 
+FROM ctekarun
+GROUP BY customer_id;
+
+
 EXPLANATION
 1. SELECT to get ids and count 
 2. FROM TABLES
